@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  flood-warning:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        PORT: ${FLOODWARNING_PORT}
+    ports:
+      - "${FLOODWARNING_PORT}:${FLOODWARNING_PORT}"
+    depends_on:
+      - mongodb-flood
+    environment:
+      - NODE_ENV=development
+    networks:
+      - flood_shared_network
+
+  
+  mongodb-flood:
+    image: "mongo:latest"
+    ports:
+      - "${FLOODWARNING_DB_PORT}:${FLOODWARNING_DB_PORT}"
+    volumes:
+      - flood-mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    networks:
+      - flood_shared_network
+
+
+volumes:
+  flood-mongo-data:
+
+networks:
+  flood_shared_network:
+    external: true
