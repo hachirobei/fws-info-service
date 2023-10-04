@@ -6,9 +6,9 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        PORT: ${FLOODWARNING_PORT}
+        PORT: $FWS_INFO_SERVICE_PORT}
     ports:
-      - "${FLOODWARNING_PORT}:${FLOODWARNING_PORT}"
+      - "$FWS_INFO_SERVICE_PORT}:$FWS_INFO_SERVICE_PORT}"
     depends_on:
       - mongodb-flood
     environment:
@@ -20,7 +20,7 @@ services:
   mongodb-flood:
     image: "mongo:latest"
     ports:
-      - "${FLOODWARNING_DB_PORT}:${FLOODWARNING_DB_PORT}"
+      - "${FWS_INFO_SERVICE_DB_PORT}:${FWS_INFO_SERVICE_DB_PORT}"
     volumes:
       - flood-mongo-data:/data/db
     environment:
