@@ -1,5 +1,5 @@
 const Station = require('../models/station');
-const WaterLevel = require('../models/waterLevel');
+const WaterLevel = require('../models/waterlevel');
 const Rainfall = require('../models/rainfall');
 
 exports.getCriticalWaterLevels = async (req, res) => {

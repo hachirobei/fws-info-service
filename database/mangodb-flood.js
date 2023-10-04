@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mangodb-flood'; 
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://user:password@mongodb-flood:27017/fws-info'; 
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,

@@ -6,7 +6,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        PORT: {$FWS_INFO_SERVICE_PORT}
+        PORT: "${FWS_INFO_SERVICE_PORT}"
     ports:
       - "${FWS_INFO_SERVICE_PORT}:${FWS_INFO_SERVICE_PORT}"
     depends_on:
@@ -16,16 +16,18 @@ services:
     networks:
       - flood_shared_network
 
-  
+
   mongodb-flood:
     image: "mongo:latest"
     ports:
-      - "${FWS_INFO_SERVICE_DB_PORT}:${FWS_INFO_SERVICE_DB_PORT}"
+      - "${FWS_INFO_SERVICE_DB_PORT}:27017"
     volumes:
       - flood-mongo-data:/data/db
+      - ./mangodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: fws-info
     networks:
       - flood_shared_network
 

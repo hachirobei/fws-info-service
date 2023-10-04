@@ -1,4 +1,4 @@
-const WaterLevel = require('../models/waterLevel');
+const WaterLevel = require('../models/waterlevel');
 
 exports.listWaterLevels = async (req, res) => {
     try {
