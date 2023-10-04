@@ -7,19 +7,8 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3002;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mangodb-flood'; 
 
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-})
-.then(() => {
-    console.log('Connected to MongoDB successfully!');
-})
-.catch(err => {
-    console.error('Failed to connect to MongoDB:', err.message);
-});
+require('../database/mangodb-flood');
 
 app.use(cors());
 app.use('/api/data', floodDataRoutes);
