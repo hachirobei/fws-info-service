@@ -11,7 +11,9 @@ const stationSchema = new mongoose.Schema({
     main_basin: String,
     station_type: String,
     station_code: String,
-    station_status: String
+    station_status: String,
+    waterLevels: [{ type: mongoose.Schema.Types.ObjectId, ref: 'WaterLevel' }],
+    rainfalls: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rainfall' }]
 });
 
 module.exports = mongoose.model('Station', stationSchema);
