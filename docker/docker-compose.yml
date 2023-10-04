@@ -6,9 +6,9 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        PORT: $FWS_INFO_SERVICE_PORT}
+        PORT: {$FWS_INFO_SERVICE_PORT}
     ports:
-      - "$FWS_INFO_SERVICE_PORT}:$FWS_INFO_SERVICE_PORT}"
+      - "${FWS_INFO_SERVICE_PORT}:${FWS_INFO_SERVICE_PORT}"
     depends_on:
       - mongodb-flood
     environment:
