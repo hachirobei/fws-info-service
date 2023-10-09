@@ -12,7 +12,7 @@ services:
     depends_on:
       - mongodb-flood
     environment:
-      - NODE_ENV=development
+      - FWS_AUTH_SERVICE_URL=http://fws-auth-service:3001/api
     networks:
       - flood_shared_network
 
