@@ -10,7 +10,11 @@ exports.authenticate = async (req, res, next) => {
     }
 
     try {
-        const response = await axios.post(`${FWS_AUTH_SERVICE_URL}/validate-token`, { token });
+        const response = await axios.post(`${FWS_AUTH_SERVICE_URL}/validate-token`, null, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         
         if (response.status === 200 && response.data.valid) {
             req.user = response.data.user;
