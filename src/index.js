@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3002;
 
 require('../database/mangodb-flood');
 
+app.use(express.json());
+
 app.use(cors());
 app.use('/api', floodDataRoutes);
 

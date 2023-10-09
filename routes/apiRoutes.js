@@ -8,6 +8,8 @@ const relationController = require('../controllers/relationsController')
 const authMiddleware = require('../middlewares/authMiddleware');
 const alertsController = require('../controllers/alertsController');
 
+
+
 router.post('/update-flood-data', async (req, res) => {
     try {
         await floodDataController.saveFloodData(req.body);
