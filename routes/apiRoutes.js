@@ -11,6 +11,11 @@ const alertsController = require('../controllers/alertsController');
 
 
 router.post('/update-flood-data', async (req, res) => {
+    // Check if the request body is an array
+    if (!Array.isArray(req.body)) {
+        return res.status(400).json({ message: 'Expected an array of flood data sets.' });
+    }
+
     try {
         await floodDataController.saveFloodData(req.body);
         res.json({ message: 'Data updated successfully' });

@@ -6,6 +6,8 @@ COPY package.json /usr/src/app/
 RUN npm install
 COPY . /usr/src/app/
 
-EXPOSE 3002 
+EXPOSE 3002
 
-CMD ["node", "src/index.js"]
+RUN npm install -g nodemon
+
+CMD ["nodemon", "src/index.js"]
